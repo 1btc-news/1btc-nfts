@@ -23,6 +23,6 @@ jobs:
       - name: "Checkout code"
         uses: actions/checkout@v3
       - name: "Check contract syntax"
-        run: docker run -v $PWD/backend:/workspace hirosystems/clarinet:latest check
+        run: docker run -v $PWD/backend:/workspace -e CLARINET_DISABLE_HINTS=1 hirosystems/clarinet:latest check
       - name: "Run all contract tests"
-        run: docker run -v $PWD/backend:/workspace hirosystems/clarinet:latest test
+        run: docker run -v $PWD/backend:/workspace -e CLARINET_DISABLE_HINTS=1 hirosystems/clarinet:latest test
