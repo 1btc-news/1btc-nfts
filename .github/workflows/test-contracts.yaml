@@ -30,6 +30,7 @@ jobs:
           echo $PWD
           echo "List backend files in working directory"
           ls -la $PWD/backend
-          docker run -v $PWD/backend:/code hirosystems/clarinet:latest bash -c "ls -la /code && clarinet check"
+          docker run -v $PWD/backend:/code hirosystems/clarinet:latest ls -la /code
+          docker run -v $PWD/backend:/code hirosystems/clarinet:latest check
       - name: "Run all contract tests"
         run: docker run -v $PWD/backend:/code hirosystems/clarinet:latest test
