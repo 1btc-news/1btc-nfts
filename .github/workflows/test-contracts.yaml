@@ -24,12 +24,12 @@ jobs:
         uses: actions/checkout@v3
       - name: "Check contract syntax"
         run: |
-          echo "List files"
-          ls -la
+          echo "List backend files"
+          ls -la backend
           echo "Print working directory"
           echo $PWD
-          echo "List files in working directory"
-          ls -la $PWD
-          docker run -v $PWD/backend:/code hirosystems/clarinet:latest check
+          echo "List backend files in working directory"
+          ls -la $PWD/backend
+          docker run -v ./backend:/code hirosystems/clarinet:latest check
       - name: "Run all contract tests"
         run: docker run -v $PWD/backend:/code hirosystems/clarinet:latest test
