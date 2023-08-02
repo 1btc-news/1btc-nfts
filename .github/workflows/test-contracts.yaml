@@ -28,6 +28,8 @@ jobs:
           ls -la
           echo "Print working directory"
           echo $PWD
+          echo "List files in working directory"
+          ls -la $PWD
           docker run -v $PWD/backend:/code hirosystems/clarinet:latest check
       - name: "Run all contract tests"
         run: docker run -v $PWD/backend:/code hirosystems/clarinet:latest test
