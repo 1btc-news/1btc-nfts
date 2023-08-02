@@ -10,14 +10,13 @@
 (define-non-fungible-token onebtc-polls-x uint)
 
 ;; constants
-(define-constant contract-owner tx-sender)
+(define-constant self (as-contract tx-sender))
 (define-constant transfer-disabled (err u1000))
 
 ;; data vars
 (define-data-var token-id-nonce uint u0)
 
 ;; public functions
-;; TODO: add mint, can only be called by this contract when contract deploys
 (define-public (transfer (token-id uint) (sender principal) (recipient principal))
 	transfer-disabled
 )
@@ -33,3 +32,19 @@
 (define-read-only (get-owner (token-id uint))
 	(ok (nft-get-owner? onebtc-polls-x token-id))
 )
+
+;; private functions
+;; TODO: add mint, can only be called by this contract when contract deploys
+(define-private (test-context (sender principal))
+	(begin 
+		(print {
+			sender: sender,
+			self: self,
+			tx-sender: tx-sender,
+			contract-caller: contract-caller,
+		})
+		(ok true)
+	)
+)
+
+(test-context self)
