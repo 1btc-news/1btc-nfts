@@ -1,0 +1,32 @@
+# GitHub action to run Clarinet tests against the contracts
+# and fail if code is invalid or a test fails.
+
+name: Test Contracts
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  # allow running manually
+  workflow_dispatch:
+
+env:
+  CLARINET_DISABLE_HINTS: 1
+
+jobs:
+  test-contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout code"
+        uses: actions/checkout@v3
+      - name: "Check contract syntax"
+        run: |
+          cd ./backend
+          docker run -v $PWD:/code hirosystems/clarinet:latest check
+      - name: "Run all contract tests"
+        run: |
+          cd ./backend
+          docker run -v $PWD:/code hirosystems/clarinet:latest test
