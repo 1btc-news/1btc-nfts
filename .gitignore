@@ -1,0 +1,5 @@
+
+backend/settings/Mainnet.toml
+backend/settings/Testnet.toml
+backend/.cache/**
+backend/history.txt
