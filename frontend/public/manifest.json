@@ -1,6 +1,6 @@
 {
-  "short_name": "1btc Verification",
-  "name": "Verify your access to the 1btc chat",
+  "short_name": "1btc Polls",
+  "name": "Manage 1btc polls and mint NFTs for participants.",
   "icons": [
     {
       "src": "favicon.ico",
