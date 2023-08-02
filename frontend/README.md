@@ -1,5 +1,8 @@
-# 1btc-polls-nft
+# 1btc Poll NFT Rewards: Frontend
 
-To run locally:
+To run the application locally:
 
-`npm start`
+```bash
+npm install
+npm start
+```
