@@ -3,6 +3,14 @@ import { Box, Heading, ListItem, OrderedList, Text } from "@chakra-ui/react";
 function Content() {
   return (
     <Box maxW="1200px">
+      <Landing />
+    </Box>
+  );
+}
+
+function Landing() {
+  return (
+    <>
       <Heading pb={8}>polls-nft</Heading>
       <Text pb={4}>Manage 1btc polls and mint NFTs for participants.</Text>
       <Text pb={4}>WIP - main goals listed below</Text>
@@ -15,8 +23,16 @@ function Content() {
         <ListItem>Deploy NFT contract 🪂</ListItem>
         <ListItem>Share results 𝕏 style</ListItem>
       </OrderedList>
-    </Box>
+    </>
   );
+}
+
+function ListPolls() {
+  return <Text>List of Polls</Text>;
+}
+
+function ViewPoll() {
+  return <Text>View Poll</Text>;
 }
 
 export default Content;
