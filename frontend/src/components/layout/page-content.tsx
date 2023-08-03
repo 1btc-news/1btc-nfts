@@ -19,8 +19,13 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
-import { useAtomValue } from "jotai";
-import { pollList, stxAddressAtom } from "../../constants";
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
+import {
+  activePollAtom,
+  activeTabAtom,
+  pollList,
+  stxAddressAtom,
+} from "../../constants";
 import ConnectWallet from "../verification-flow/connect-wallet";
 import { FiEdit } from "react-icons/fi";
 
@@ -35,13 +40,22 @@ function Content() {
 }
 
 function Landing() {
+  const [activeTab, setActiveTab] = useAtom(activeTabAtom);
+
   return (
-    <Tabs variant="enclosed" colorScheme="orange">
+    <Tabs
+      variant="enclosed"
+      colorScheme="orange"
+      onChange={(index) => setActiveTab(index)}
+      defaultIndex={activeTab}
+      isFitted
+    >
       <TabList>
         <Tab>Home</Tab>
         <Tab>List of Polls</Tab>
         <Tab>View a Poll</Tab>
         <Tab>Create a Poll</Tab>
+        <Tab isDisabled>Active Tab: {activeTab}</Tab>
       </TabList>
       <TabPanels>
         <TabPanel>
@@ -72,6 +86,8 @@ function Landing() {
 }
 
 function ListPolls() {
+  const setActivePoll = useSetAtom(activePollAtom);
+
   return (
     <TableContainer>
       <Table size="sm" variant="simple" colorScheme="orange" overflowX="hidden">
@@ -115,7 +131,7 @@ function ListPolls() {
                 <Td>
                   <IconButton
                     aria-label="Edit"
-                    onClick={() => console.log(`poll: ${poll.id}`)}
+                    onClick={() => setActivePoll(poll.id)}
                     icon={<FiEdit />}
                   />
                 </Td>
@@ -141,7 +157,18 @@ function ListPolls() {
 }
 
 function ViewPoll() {
-  return <Text>View Poll</Text>;
+  const activePoll = useAtomValue(activePollAtom);
+
+  if (activePoll) {
+    return (
+      <Box>
+        <Text>View Poll</Text>
+        <Text>Active Poll ID: {activePoll}</Text>
+      </Box>
+    );
+  }
+
+  return <Text>Poll ID not known, enter one? Input + Button</Text>;
 }
 
 function CreatePoll() {

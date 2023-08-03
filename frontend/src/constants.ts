@@ -127,6 +127,13 @@ export type AccountData = {
 // used to persist on close/open
 /////////////////////////
 
+export const activeTabAtom = atomWithStorage<number>("1btc-activeTab", 1);
+
+export const activePollAtom = atomWithStorage<number | null>(
+  "1btc-activePoll",
+  null
+);
+
 // stacks address from wallet
 export const stxAddressAtom = atomWithStorage<string | null>(
   "1btc-stxAddress",
