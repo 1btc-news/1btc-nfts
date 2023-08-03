@@ -1,5 +1,6 @@
 import {
   Box,
+  IconButton,
   Link,
   ListItem,
   OrderedList,
@@ -21,6 +22,7 @@ import {
 import { useAtomValue } from "jotai";
 import { pollList, stxAddressAtom } from "../../constants";
 import ConnectWallet from "../verification-flow/connect-wallet";
+import { FiEdit } from "react-icons/fi";
 
 function Content() {
   const stxAddress = useAtomValue(stxAddressAtom);
@@ -83,6 +85,7 @@ function ListPolls() {
             <Th>No Votes</Th>
             <Th>Total USD</Th>
             <Th isNumeric>Inscription #</Th>
+            <Th>Actions</Th>
           </Tr>
         </Thead>
         <Tbody>
@@ -93,7 +96,7 @@ function ListPolls() {
                 <Td isNumeric>{poll.id}</Td>
                 <Td>{poll.status}</Td>
                 <Td>{poll.image}</Td>
-                <Td>{poll.title.substring(0, 50)}...</Td>
+                <Td whiteSpace="normal">{poll.title}</Td>
                 <Td isNumeric>{poll.yesVotes}</Td>
                 <Td isNumeric>{poll.noVotes}</Td>
                 <Td isNumeric>${poll.totalUSD}</Td>
@@ -109,6 +112,13 @@ function ListPolls() {
                     {poll.inscriptionNumber ? poll.inscriptionNumber : "TBD"}
                   </Link>
                 </Td>
+                <Td>
+                  <IconButton
+                    aria-label="Edit"
+                    onClick={() => console.log(`poll: ${poll.id}`)}
+                    icon={<FiEdit />}
+                  />
+                </Td>
               </Tr>
             ))}
         </Tbody>
@@ -122,6 +132,7 @@ function ListPolls() {
             <Th>No Votes</Th>
             <Th>Total USD</Th>
             <Th isNumeric>Inscription #</Th>
+            <Th>Actions</Th>
           </Tr>
         </Tfoot>
       </Table>
