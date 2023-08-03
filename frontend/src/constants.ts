@@ -9,6 +9,91 @@ import { SignatureData } from "micro-stacks/connect";
 // https://docs.1btc.chat/1btc-chat-api
 export const apiUrl = "https://1btc-api.console.xyz";
 
+export const pollList = [
+  {
+    id: 1,
+    status: "Complete",
+    image: "(none)",
+    title:
+      "Will the U.S. fall behind as a crypto leader because of regulatory crackdown?",
+    yesVotes: 4,
+    noVotes: 0,
+    totalUSD: 120376,
+    inscriptionNumber: 14028881,
+  },
+  {
+    id: 2,
+    status: "Complete",
+    image: "(none)",
+    title: "Have you every bought or inscribed an ordinal?",
+    yesVotes: 4,
+    noVotes: 1,
+    totalUSD: 152870,
+    inscriptionNumber: 14167353,
+  },
+  {
+    id: 3,
+    status: "Complete",
+    image: "(none)",
+    title: 'Is the Blackrock “ETF" good for Bitcoin?',
+    yesVotes: 4,
+    noVotes: 0,
+    totalUSD: 123058,
+    inscriptionNumber: 14569273,
+  },
+  {
+    id: 11,
+    status: "Complete",
+    image: "(none)",
+    title: "Should there be a Bill of Rights for the Internet?",
+    yesVotes: 5,
+    noVotes: 0,
+    totalUSD: 146000,
+    inscriptionNumber: 19440142,
+  },
+  {
+    id: 14,
+    status: "Complete",
+    image: "(none)",
+    title: "Should congress have term limits and age caps?",
+    yesVotes: 4,
+    noVotes: 0,
+    totalUSD: 116821,
+    inscriptionNumber: 20794145,
+  },
+  {
+    id: 15,
+    status: "Complete",
+    image: "(none)",
+    title: "Should net-exporting oil countries accept Bitcoin for settlement?",
+    yesVotes: 4,
+    noVotes: 0,
+    totalUSD: 116951,
+    inscriptionNumber: 20926507,
+  },
+  {
+    id: 16,
+    status: "Complete",
+    image: "(none)",
+    title:
+      "Is the now $1T interest-only annual payments on the US national debt the beginning of a material problem?",
+    yesVotes: 4,
+    noVotes: 0,
+    totalUSD: 116700,
+    inscriptionNumber: 21062808,
+  },
+  {
+    id: 17,
+    status: "Active",
+    image: "(none)",
+    title: "Should encryption be a first amendment right?",
+    yesVotes: 3,
+    noVotes: 0,
+    totalUSD: undefined,
+    inscriptionNumber: undefined,
+  },
+];
+
 /////////////////////////
 // TYPES
 /////////////////////////

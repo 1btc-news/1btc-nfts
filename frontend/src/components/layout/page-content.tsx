@@ -1,16 +1,25 @@
 import {
   Box,
+  Link,
   ListItem,
   OrderedList,
   Tab,
   TabList,
   TabPanel,
   TabPanels,
+  Table,
+  TableContainer,
   Tabs,
+  Tbody,
+  Td,
   Text,
+  Tfoot,
+  Th,
+  Thead,
+  Tr,
 } from "@chakra-ui/react";
 import { useAtomValue } from "jotai";
-import { stxAddressAtom } from "../../constants";
+import { pollList, stxAddressAtom } from "../../constants";
 import ConnectWallet from "../verification-flow/connect-wallet";
 
 function Content() {
@@ -61,7 +70,63 @@ function Landing() {
 }
 
 function ListPolls() {
-  return <Text>List of Polls</Text>;
+  return (
+    <TableContainer>
+      <Table size="sm" variant="simple" colorScheme="orange" overflowX="hidden">
+        <Thead>
+          <Tr>
+            <Th isNumeric>#</Th>
+            <Th>Status</Th>
+            <Th>Image</Th>
+            <Th>Title</Th>
+            <Th>Yes Votes</Th>
+            <Th>No Votes</Th>
+            <Th>Total USD</Th>
+            <Th isNumeric>Inscription #</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          {pollList
+            .sort((a, b) => b.id - a.id)
+            .map((poll) => (
+              <Tr key={poll.id}>
+                <Td isNumeric>{poll.id}</Td>
+                <Td>{poll.status}</Td>
+                <Td>{poll.image}</Td>
+                <Td>{poll.title.substring(0, 50)}...</Td>
+                <Td isNumeric>{poll.yesVotes}</Td>
+                <Td isNumeric>{poll.noVotes}</Td>
+                <Td isNumeric>${poll.totalUSD}</Td>
+                <Td isNumeric>
+                  <Link
+                    isExternal
+                    href={
+                      poll.inscriptionNumber
+                        ? `https://1btc.news/view-news?id=${poll.inscriptionNumber}`
+                        : "#"
+                    }
+                  >
+                    {poll.inscriptionNumber ? poll.inscriptionNumber : "TBD"}
+                  </Link>
+                </Td>
+              </Tr>
+            ))}
+        </Tbody>
+        <Tfoot>
+          <Tr>
+            <Th isNumeric>#</Th>
+            <Th>Status</Th>
+            <Th>Image</Th>
+            <Th>Title</Th>
+            <Th>Yes Votes</Th>
+            <Th>No Votes</Th>
+            <Th>Total USD</Th>
+            <Th isNumeric>Inscription #</Th>
+          </Tr>
+        </Tfoot>
+      </Table>
+    </TableContainer>
+  );
 }
 
 function ViewPoll() {
