@@ -6,12 +6,6 @@ import { SignatureData } from "micro-stacks/connect";
 // CONSTANTS
 /////////////////////////
 
-export const registrationSteps = [
-  { title: "Connect Wallet", description: "Step 1" },
-  { title: "Sign Message", description: "Step 2" },
-  { title: "Send Dust", description: "Step 3" },
-];
-
 // https://docs.1btc.chat/1btc-chat-api
 export const apiUrl = "https://1btc-api.console.xyz";
 
