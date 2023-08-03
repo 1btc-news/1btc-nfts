@@ -160,12 +160,36 @@ function ViewPoll() {
   const activePoll = useAtomValue(activePollAtom);
 
   if (activePoll) {
-    return (
-      <Box>
-        <Text>View Poll</Text>
-        <Text>Active Poll ID: {activePoll}</Text>
-      </Box>
-    );
+    const poll = pollList.find((poll) => poll.id === activePoll);
+    if (poll) {
+      return (
+        <Box>
+          <Text>View Poll</Text>
+          <Text>Active Poll ID: {activePoll}</Text>
+          <Text>ID: {poll.id}</Text>
+          <Text>Status: {poll.status}</Text>
+          <Text>Image: {poll.image}</Text>
+          <Text>Title: {poll.title}</Text>
+          <Text>Yes Votes: {poll.yesVotes}</Text>
+          <Text>No Votes: {poll.noVotes}</Text>
+          <Text>Total USD: ${poll.totalUSD}</Text>
+          <Text>
+            Inscription #:{" "}
+            <Link
+              isExternal
+              href={
+                poll.inscriptionNumber
+                  ? `https://1btc.news/view-news?id=${poll.inscriptionNumber}`
+                  : "#"
+              }
+            >
+              {poll.inscriptionNumber ? poll.inscriptionNumber : "TBD"}
+            </Link>
+          </Text>
+        </Box>
+      );
+    }
+    return <Text>Poll ID not found {activePoll}</Text>;
   }
 
   return <Text>Poll ID not known, enter one? Input + Button</Text>;
