@@ -92,6 +92,17 @@ export const pollList = [
     totalUSD: undefined,
     inscriptionNumber: undefined,
   },
+  {
+    id: 18,
+    status: "Active",
+    image: "(none)",
+    title:
+      "Should regional banks be allowed to unbank or debank companies simply because they use Bitcoin?",
+    yesVotes: 0,
+    noVotes: 4,
+    totalUSD: undefined,
+    inscriptionNumber: undefined,
+  },
 ];
 
 /////////////////////////
