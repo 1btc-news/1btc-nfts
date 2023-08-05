@@ -2,6 +2,8 @@ import { useAuth } from "@micro-stacks/react";
 import { useSetAtom } from "jotai";
 import {
   accountDataAtom,
+  activePollAtom,
+  activeTabAtom,
   insufficientBalanceToggleAtom,
   sentDustToggleAtom,
   signatureDataAtom,
@@ -13,6 +15,8 @@ import { RESET } from "jotai/utils";
 
 function ClearData(props: { variant?: string }) {
   const { signOut } = useAuth();
+  const setActivePoll = useSetAtom(activePollAtom);
+  const setActiveTab = useSetAtom(activeTabAtom);
   const setStxAddress = useSetAtom(stxAddressAtom);
   const setAccountData = useSetAtom(accountDataAtom);
   const setSignatureMsg = useSetAtom(signatureMsgAtom);
@@ -28,6 +32,8 @@ function ClearData(props: { variant?: string }) {
       title="Clear Data"
       onClick={() => {
         // clear all locally stored data
+        setActivePoll(RESET);
+        setActiveTab(RESET);
         setStxAddress(RESET);
         setAccountData(RESET);
         setSignatureMsg(RESET);
