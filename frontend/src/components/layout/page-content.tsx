@@ -1,12 +1,18 @@
 import {
   Box,
+  Button,
+  FormControl,
+  FormErrorMessage,
+  FormHelperText,
+  FormLabel,
   Heading,
   IconButton,
+  Input,
   Link,
   ListItem,
   OrderedList,
+  SimpleGrid,
   Stack,
-  StackDivider,
   Tab,
   TabList,
   TabPanel,
@@ -21,6 +27,7 @@ import {
   Th,
   Thead,
   Tr,
+  useControllableState,
 } from "@chakra-ui/react";
 import { useAtom, useAtomValue } from "jotai";
 import {
@@ -30,7 +37,7 @@ import {
   stxAddressAtom,
 } from "../../constants";
 import ConnectWallet from "../verification-flow/connect-wallet";
-import { FiEdit, FiX } from "react-icons/fi";
+import { FiEdit, FiSearch, FiX } from "react-icons/fi";
 
 function Content() {
   const stxAddress = useAtomValue(stxAddressAtom);
@@ -211,6 +218,7 @@ function ListPolls() {
 
 function ViewPoll() {
   const [activePoll, setActivePoll] = useAtom(activePollAtom);
+  const [pollId, setPollId] = useControllableState({ defaultValue: "" });
 
   if (activePoll) {
     const poll = pollList.find((poll) => poll.id === activePoll);
@@ -237,52 +245,22 @@ function ViewPoll() {
               />
             </Text>
           </Stack>
-          <Stack direction="row" divider={<StackDivider />}>
-            <Text fontWeight="bold" width="125px">
-              ID
-            </Text>
-            <Text>{poll.id}</Text>
-          </Stack>
-          <Stack direction="row" divider={<StackDivider />}>
-            <Text fontWeight="bold" width="125px">
-              Status
-            </Text>
-            <Text>{poll.status}</Text>
-          </Stack>
-          <Stack direction="row" divider={<StackDivider />}>
-            <Text fontWeight="bold" width="125px">
-              Image
-            </Text>
-            <Text>{poll.image}</Text>
-          </Stack>
-          <Stack direction="row" divider={<StackDivider />}>
-            <Text fontWeight="bold" width="125px">
-              Title
-            </Text>
+          <SimpleGrid columns={2} spacing={4} mb={8} templateColumns="auto 1fr">
+            <Text fontWeight="bold">Title</Text>
             <Text>{poll.title}</Text>
-          </Stack>
-          <Stack direction="row" divider={<StackDivider />}>
-            <Text fontWeight="bold" width="125px">
-              Yes Votes
-            </Text>
+            <Text fontWeight="bold">ID</Text>
+            <Text>{poll.id}</Text>
+            <Text fontWeight="bold">Status</Text>
+            <Text>{poll.status}</Text>
+            <Text fontWeight="bold">Image</Text>
+            <Text>{poll.image}</Text>
+            <Text fontWeight="bold">Yes Votes</Text>
             <Text>{poll.yesVotes}</Text>
-          </Stack>
-          <Stack direction="row" divider={<StackDivider />}>
-            <Text fontWeight="bold" width="125px">
-              No Votes
-            </Text>
+            <Text fontWeight="bold">No Votes</Text>
             <Text>{poll.noVotes}</Text>
-          </Stack>
-          <Stack direction="row" divider={<StackDivider />}>
-            <Text fontWeight="bold" width="125px">
-              Total USD
-            </Text>
+            <Text fontWeight="bold">Total USD</Text>
             <Text>${poll.totalUSD}</Text>
-          </Stack>
-          <Stack direction="row" divider={<StackDivider />}>
-            <Text fontWeight="bold" width="125px">
-              Inscription #
-            </Text>
+            <Text fontWeight="bold">Inscription #</Text>
             <Text>
               <Link
                 color="orange.500"
@@ -296,7 +274,7 @@ function ViewPoll() {
                 {poll.inscriptionNumber ? poll.inscriptionNumber : "TBD"}
               </Link>
             </Text>
-          </Stack>
+          </SimpleGrid>
         </Box>
       );
     }
@@ -322,7 +300,10 @@ function ViewPoll() {
             />
           </Text>
         </Stack>
-        <Text>Poll ID not found {activePoll}</Text>
+        <Text mb={8}>Poll ID {activePoll} not found</Text>
+        <Button variant="1btc-orange" onClick={() => setActivePoll(null)}>
+          Start Over
+        </Button>
       </Box>
     );
   }
@@ -349,7 +330,28 @@ function ViewPoll() {
           />
         </Text>
       </Stack>
-      <Text>Poll ID not known, enter one? Input + Button</Text>
+      <FormControl id="pollId" isRequired>
+        <FormLabel>Enter a poll ID:</FormLabel>
+        <Stack direction="row" alignItems="center">
+          <Input
+            type="number"
+            placeholder="Poll ID"
+            onChange={(e) => setPollId(e.target.value)}
+          />
+          <IconButton
+            aria-label="Search for poll ID"
+            title="Search for poll ID"
+            icon={<FiSearch />}
+            onClick={() => setActivePoll(Number(pollId))}
+          />
+        </Stack>
+        <FormHelperText>
+          IDs are unique for each poll, and displayed on the list of polls.
+        </FormHelperText>
+        <FormErrorMessage fontWeight="bold">
+          Please provide a valid number.
+        </FormErrorMessage>
+      </FormControl>
     </Box>
   );
 }
