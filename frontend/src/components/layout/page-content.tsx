@@ -394,6 +394,23 @@ function CreatePoll() {
             Upload an image to be used for the poll.
           </FormHelperText>
         </FormControl>
+        <FormControl id="post-yes-votes">
+          <FormLabel>Yes Votes</FormLabel>
+          <Input type="number" placeholder="Yes Votes" />
+          <FormHelperText>Enter the number of yes votes.</FormHelperText>
+        </FormControl>
+        <FormControl id="post-no-votes">
+          <FormLabel>No Votes</FormLabel>
+          <Input type="number" placeholder="No Votes" />
+          <FormHelperText>Enter the number of no votes.</FormHelperText>
+        </FormControl>
+        <FormControl id="post-total-usd">
+          <FormLabel>Total USD</FormLabel>
+          <Input type="number" placeholder="Total USD" />
+          <FormHelperText>
+            Enter the total USD value of the Bitcoin.
+          </FormHelperText>
+        </FormControl>
       </Stack>
     </>
   );
