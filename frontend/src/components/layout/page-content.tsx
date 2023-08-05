@@ -360,26 +360,42 @@ function CreatePoll() {
   const [activePoll, setActivePoll] = useAtom(activePollAtom);
 
   return (
-    <Stack
-      direction="row"
-      alignContent="center"
-      justifyContent="space-between"
-      mb={8}
-    >
-      <Heading>Create a Poll</Heading>
-      <Text color="gray.400" fontSize="sm">
-        Active Poll ID: {activePoll ? activePoll : "none"}{" "}
-        <IconButton
-          aria-label="Clear active poll"
-          title="Clear active poll"
-          size="sm"
-          color="orange.500"
-          bg="transparent"
-          icon={<FiX />}
-          onClick={() => setActivePoll(null)}
-        />
-      </Text>
-    </Stack>
+    <>
+      <Stack
+        direction="row"
+        alignContent="center"
+        justifyContent="space-between"
+        mb={8}
+      >
+        <Heading>Create a Poll</Heading>
+        <Text color="gray.400" fontSize="sm">
+          Active Poll ID: {activePoll ? activePoll : "none"}{" "}
+          <IconButton
+            aria-label="Clear active poll"
+            title="Clear active poll"
+            size="sm"
+            color="orange.500"
+            bg="transparent"
+            icon={<FiX />}
+            onClick={() => setActivePoll(null)}
+          />
+        </Text>
+      </Stack>
+      <Stack direction="column">
+        <FormControl id="post-title">
+          <FormLabel>Title</FormLabel>
+          <Input type="text" placeholder="Title" />
+          <FormHelperText>Enter a title for the poll.</FormHelperText>
+        </FormControl>
+        <FormControl id="post-image">
+          <FormLabel>Image</FormLabel>
+          <Input type="file" />
+          <FormHelperText>
+            Upload an image to be used for the poll.
+          </FormHelperText>
+        </FormControl>
+      </Stack>
+    </>
   );
 }
 
