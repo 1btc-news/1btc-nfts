@@ -1,4 +1,4 @@
-# 1btc Poll NFT Rewards: Backend
+# 1btc NFT Rewards: backend
 
 To check and test the contracts:
 

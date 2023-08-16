@@ -1,4 +1,4 @@
-# 1btc Poll NFT Rewards: Frontend
+# 1btc NFT Rewards: frontend
 
 To run the application locally:
 

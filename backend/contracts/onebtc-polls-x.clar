@@ -1,13 +1,13 @@
 
-;; title: onebtc-polls-x
+;; title: onebtc-nft-x
 ;; version: 1.0.0
-;; summary: NFT contract to reward 1btc poll participants
+;; summary: NFT contract to reward 1btc chat participants
 
 ;; traits
 (impl-trait 'SP2PABAF9FTAJYNFZH93XENAJ8FVY99RRM50D2JG9.nft-trait.nft-trait)
 
 ;; token definitions
-(define-non-fungible-token onebtc-polls-x uint)
+(define-non-fungible-token onebtc-nft-x uint)
 
 ;; constants
 (define-constant self (as-contract tx-sender))
@@ -30,7 +30,7 @@
 	(ok none)
 )
 (define-read-only (get-owner (token-id uint))
-	(ok (nft-get-owner? onebtc-polls-x token-id))
+	(ok (nft-get-owner? onebtc-nft-x token-id))
 )
 
 ;; private functions
