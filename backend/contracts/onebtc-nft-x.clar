@@ -25,9 +25,9 @@
 (define-read-only (get-last-token-id)
 	(ok (var-get token-id-nonce))
 )
-;; TODO: add btc:ord implementation
 (define-read-only (get-token-uri (token-id uint))
-	(ok none)
+  ;; "It's not bragging if you can back it up."
+	(ok (some "ord://i/33c37b1b4266490fc82e494d2f8a1c11156b5f89113e1849bf84165f8edcd78fi0"))
 )
 (define-read-only (get-owner (token-id uint))
 	(ok (nft-get-owner? onebtc-nft-x token-id))
