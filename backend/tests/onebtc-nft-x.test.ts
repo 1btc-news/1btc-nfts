@@ -19,7 +19,7 @@ Clarinet.test({
     const block = chain.mineBlock([
       Tx.contractCall(
         // TODO: see why name doesn't update with Clarinet
-        "poll-1",
+        "onebtc-nft-x",
         "transfer",
         [
           types.uint(1), // token-id

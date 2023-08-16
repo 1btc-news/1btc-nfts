@@ -1,6 +1,6 @@
 [project]
-name = 'onebtc-polls-nft'
-description = 'NFT contract to reward 1btc poll participants'
+name = 'onebtc-nft-x'
+description = 'NFT contract to reward 1btc participants'
 authors = []
 telemetry = false
 cache_dir = './.cache'
@@ -8,8 +8,8 @@ cache_dir = './.cache'
 [[project.requirements]]
 contract_id = 'SP2PABAF9FTAJYNFZH93XENAJ8FVY99RRM50D2JG9.nft-trait'
 
-[contracts.poll-1]
-path = 'contracts/onebtc-polls-x.clar'
+[contracts.onebtc-nft-x]
+path = 'contracts/onebtc-nft-x.clar'
 clarity_version = 2
 epoch = 2.4
 
